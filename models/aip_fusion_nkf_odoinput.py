@@ -105,6 +105,7 @@ plt.show()
 estimated_position = np.column_stack((positions_x, positions_y, positions_z))
 estimated_orientation = imu_orientations[:, :4]  # Use the first 4 columns for quaternion
 ground_truth = np.column_stack((gt_positions, gt_orientations))  # Combine position and orientation
+
 # Normalize the data
 estimated_position = (estimated_position - np.mean(estimated_position, axis=0)) / np.std(estimated_position, axis=0)
 estimated_orientation = (estimated_orientation - np.mean(estimated_orientation, axis=0)) / np.std(estimated_orientation, axis=0)
