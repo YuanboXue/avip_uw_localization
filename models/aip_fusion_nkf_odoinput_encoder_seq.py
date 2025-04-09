@@ -26,42 +26,6 @@ pressure_data = single_timestep_data[['pressure_fluid_pressure']].values
 ground_truth = single_timestep_data[['gt_position_x', 'gt_position_y', 'gt_position_z',
                                      'gt_orientation_x', 'gt_orientation_y', 'gt_orientation_z', 'gt_orientation_w']].values
 
-# Split the data into training and testing sets
-imu_train, imu_test, dvl_train, dvl_test, pressure_train, pressure_test, gt_train, gt_test = train_test_split(
-    imu_sequences, dvl_data, pressure_data, ground_truth, test_size=0.2, random_state=42
-)
-
-# Normalize the data
-# imu_sequences_mean = np.mean(imu_train, axis=(0, 1))
-# imu_sequences_std = np.std(imu_train, axis=(0, 1))
-# imu_train = (imu_train - imu_sequences_mean) / imu_sequences_std
-# imu_test = (imu_test - imu_sequences_mean) / imu_sequences_std
-
-# dvl_data_mean = np.mean(dvl_train, axis=0)
-# dvl_data_std = np.std(dvl_train, axis=0)
-# dvl_train = (dvl_train - dvl_data_mean) / dvl_data_std
-# dvl_test = (dvl_test - dvl_data_mean) / dvl_data_std
-
-# pressure_data_mean = np.mean(pressure_train, axis=0)
-# pressure_data_std = np.std(pressure_train, axis=0)
-# pressure_train = (pressure_train - pressure_data_mean) / pressure_data_std
-# pressure_test = (pressure_test - pressure_data_mean) / pressure_data_std
-
-# ground_truth_mean = np.mean(gt_train, axis=0)
-# ground_truth_std = np.std(gt_train, axis=0)
-# gt_train = (gt_train - ground_truth_mean) / ground_truth_std
-# gt_test = (gt_test - ground_truth_mean) / ground_truth_std
-
-# Convert data to PyTorch tensors
-# imu_train = torch.tensor(imu_train, dtype=torch.float32)
-# imu_test = torch.tensor(imu_test, dtype=torch.float32)
-# dvl_train = torch.tensor(dvl_train, dtype=torch.float32)
-# dvl_test = torch.tensor(dvl_test, dtype=torch.float32)
-# pressure_train = torch.tensor(pressure_train, dtype=torch.float32)
-# pressure_test = torch.tensor(pressure_test, dtype=torch.float32)
-# gt_train = torch.tensor(gt_train, dtype=torch.float32)
-# gt_test = torch.tensor(gt_test, dtype=torch.float32)
-
 # Define the IMU Encoder (processes sequences)
 class IMUEncoder(nn.Module):
     def __init__(self, input_dim=10, sequence_length=10, output_dim=64):
